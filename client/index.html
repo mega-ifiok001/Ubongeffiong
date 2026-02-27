@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubong Effiong</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/me.jpeg">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../../../maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/smooth-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+</head>
+
+<style>
+/* Modal background */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal content */
+.modal-content {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  position: relative;
+  animation: slideUp 0.4s ease;
+  justify-content:center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: #888;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.close:hover {
+  color: #ff4d6d;
+  transform: scale(1.2);
+}
+
+/* GIF styling */
+.modal-gif {
+  width: 80px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+}
+
+/* Modal text */
+#modalMessage {
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideUp {
+  from {transform: translateY(50px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+</style>
+
+
+<body class="home5-page">
+    <video class="body-overlay" muted autoplay loop>
+        <source src="assets/images/video5.mp4" type="video/mp4">
+    </video>
+
+    <div class="page-loader">
+        <div class="bounceball"></div>
+    </div>
+
+    <span class="icon-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </span>
+
+    <div class="global-color">
+        <span class="setting-toggle">
+            <i class="las la-cog"></i>
+        </span>
+        <div class="inner">
+            <div class="overlay"></div>
+            <div class="global-color-option">
+                <span class="close-settings">
+                    <i class="las la-times"></i>
+                </span>
+                <h2>Configuration</h2>
+                <div class="global-color-option-inner">
+                    <p>Colors</p>
+                    <div class="color-boxed">
+                        <a href="#" class="clr-active" onclick="color1();"></a>
+                        <a href="#" onclick="color2();"></a>
+                        <a href="#" onclick="color3();"></a>
+                        <a href="#" onclick="color4();"></a>
+                        <a href="#" onclick="color5();"></a>
+                        <a href="#" onclick="color6();"></a>
+                        <a href="#" onclick="color7();"></a>
+                        <a href="#" onclick="color8();"></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="responsive-sidebar-menu">
+        <div class="overlay"></div>
+        <div class="sidebar-menu-inner">
+            <div class="menu-wrap">
+                <p>Menu</p>
+                <ul class="menu scroll-nav-responsive d-flex">
+                    <li>
+                        <a class="scroll-to" href="#home">
+                            <i class="las la-home"></i> <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="scroll-to" href="#about">
+                            <i class="lar la-user"></i> <span>About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="scroll-to" href="#resume">
+                            <i class="las la-briefcase"></i> <span>Resume</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="scroll-to" href="#services">
+                            <i class="las la-stream"></i> <span>Focus</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="scroll-to" href="#portfolio">
+                            <i class="las la-grip-vertical"></i> <span>Work</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="scroll-to" href="#contact">
+                            <i class="las la-envelope"></i> <span>Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-social">
+                <p>Social</p>
+                <ul class="social-links d-flex align-items-center">
+                    <li>
+                        <a href="#"><i class="lab la-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="lab la-twitter"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <ul class="menu scroll-nav d-flex">
+        <li>
+            <a class="scroll-to" href="#home">
+                <span>Home</span> <i class="las la-home"></i>
+            </a>
+        </li>
+        <li>
+            <a class="scroll-to" href="#about">
+                <span>About</span> <i class="lar la-user"></i>
+            </a>
+        </li>
+        <li>
+            <a class="scroll-to" href="#resume">
+                <span>Resume</span> <i class="las la-briefcase"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#services">
+                <span>Focus</span> <i class="las la-stream"></i>
+            </a>
+        </li>
+        <li>
+            <a class="scroll-to" href="#portfolio">
+                <span>Work</span> <i class="las la-grip-vertical"></i>
+            </a>
+        </li>
+        <li>
+            <a class="scroll-to" href="#contact">
+                <span>Contact</span> <i class="las la-envelope"></i>
+            </a>
+        </li>
+    </ul>
+
+    <div class="left-sidebar">
+        <div class="sidebar-header d-flex align-items-center justify-content-between">
+            <span class="designation">Ubong Effiong</span>
+            <span class="designation">Business Strategist | Systems Architect</span>
+        </div>
+        <img class="me" src="assets/images/me.jpeg" alt="Me">
+        <h2 class="email">ubongeffiong46@gmail.com</h2>
+        <h2 class="address">Uyo, Nigeria</h2>
+        <p class="copyright">© 2026 Ubong Effiong. All Rights Reserved</p>
+        <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
+            <li>
+                <a href="#"><i class="lab la-linkedin"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="lab la-facebook"></i></a>
+            </li>
+              <li>
+                <a href="#"><i class="lab la-twitter"></i></a>
+            </li>
+             <li>
+                <a href="#"><i class="lab la-instagram"></i></a>
+            </li>
+            
+        </ul>
+        <a href="mailto:ubongeffiong46@gmail.com" class="theme-btn">
+            <i class="las la-envelope"></i> Get in Touch
+        </a>
+    </div>
+
+    <main class="drake-main">
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+
+                <div class="left-sidebar">
+                    <div class="sidebar-header d-flex align-items-center justify-content-between">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span class="designation">Business Strategist | Systems Architect</span>
+                    </div>
+                    <img class="me" src="assets/images/me.jpg" alt="Me">
+                    <h2 class="email">ubongeffiong46@gmail.com</h2>
+                    <h2 class="address">Uyo, Nigeria</h2>
+                    <p class="copyright">© 2026 Ubong Effiong. All Rights Reserved</p>
+                    <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
+                        <li>
+                <a href="#"><i class="lab la-linkedin"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="lab la-facebook"></i></a>
+            </li>
+              <li>
+                <a href="#"><i class="lab la-twitter"></i></a>
+            </li>
+             <li>
+                <a href="#"><i class="lab la-instagram"></i></a>
+            </li>
+                    </ul>
+                    <a href="mailto:ubongeffiong46@gmail.com" class="theme-btn">
+                        <i class="las la-envelope"></i> Let’s Build Structured Growth
+                    </a>
+                </div>
+
+                <section class="hero-section page-section scroll-to-page" id="home">
+
+                    <div class="custom-container">
+                        <div class="hero-content content-width">
+                            <div class="section-header">
+                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                    <i class="las la-home"></i> Introduce
+                                </h4>
+                                <h1 class="scroll-animation" data-animation="fade_from_bottom"> <span>Ubong Effiong</span>, MBA Business Strategist, Systems Architect, Founder</h1>
+                            </div>
+                            <p class="scroll-animation" data-animation="fade_from_bottom">I design structured business systems that align operations, people, and performance for scalable growth.</p>
+                            
+                            <div class="hero-buttons d-flex gap-3 mt-4">
+                                <a href="#portfolio" class="theme-btn scroll-to">View Work</a>
+                                <a href="assets/docs/ubong-effiong-cv.docx" class="theme-btn" download>Download CV</a>
+                                <a href="#contact" class="theme-btn scroll-to">Contact</a>
+                            </div>
+
+                            <div class="facts d-flex">
+                                <div class="left scroll-animation" data-animation="fade_from_left">
+                                    <h1>MBA</h1>
+                                    <p>Business Administration & Strategic Leadership</p>
+                                </div>
+                                <div class="right scroll-animation" data-animation="fade_from_right">
+                                    <h1>4+</h1>
+                                    <p>Years Building Scalable Systems & Governance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="about-area page-section scroll-to-page" id="about">
+                    <div class="custom-container">
+                        <div class="about-content content-width">
+                            <div class="section-header">
+                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                    <i class="lar la-user"></i> About
+                                </h4>
+                                <h1 class="scroll-animation" data-animation="fade_from_bottom">Structure drives <span>scalable growth</span></h1>
+                            </div>
+                            <p class="scroll-animation" data-animation="fade_from_bottom">Ubong Effiong holds an MBA and B.Sc. in Computer Science from the University of Uyo, complemented by executive certifications in project management, digital leadership, strategic governance, and HR analytics (Google and others).</p>
+                            <p class="scroll-animation" data-animation="fade_from_bottom">As a Business Strategist, he focuses on governance, operational design, and performance systems for growth-stage organizations and startups.</p>
+                            <p class="scroll-animation" data-animation="fade_from_bottom">Growth is engineered, not accidental. I design systems that turn strategy into disciplined execution, reduce founder dependency, clarify accountability, and prepare businesses for scale and investment.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="services-area page-section scroll-to-page" id="services">
+                    <div class="custom-container">
+                        <div class="services-content content-width">
+                            <div class="section-header">
+                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                    <i class="las la-stream"></i> Strategic Focus
+                                </h4>
+                                <h1 class="scroll-animation" data-animation="fade_from_bottom">Core <span>Capabilities</span></h1>
+                            </div>
+
+                            <div class="services-items">
+                                <div class="service-item scroll-animation" data-animation="fade_from_bottom">
+                                    <i class="las la-sitemap"></i>
+                                    <h2>Business Architecture</h2>
+                                    <p>Organizational design • Governance frameworks • Role clarity & accountability matrices</p>
+                                    <span class="projects">Structure & Governance</span>
+                                </div>
+                                <div class="service-item scroll-animation" data-animation="fade_from_bottom">
+                                    <i class="las la-chart-line"></i>
+                                    <h2>Operational Strategy</h2>
+                                    <p>Process optimization • KPI & dashboard design • Performance alignment & execution tracking</p>
+                                    <span class="projects">Execution & Alignment</span>
+                                </div>
+                                <div class="service-item scroll-animation" data-animation="fade_from_bottom">
+                                    <i class="las la-building"></i>
+                                    <h2>Growth Infrastructure</h2>
+                                    <p>Scalable operating models • Compliance structures • Investor-ready documentation & reporting</p>
+                                    <span class="projects">Scale & Investment Readiness</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="resume-area page-section scroll-to-page" id="resume">
+                    <div class="custom-container">
+                        <div class="resume-content content-width">
+                            <div class="section-header">
+                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                    <i class="las la-briefcase"></i> Resume
+                                </h4>
+                                <h1 class="scroll-animation" data-animation="fade_from_bottom">Education & <span>Professional Foundation</span></h1>
+                            </div>
+
+                            <div class="resume-timeline">
+                                <div class="item scroll-animation" data-animation="fade_from_right">
+                                    <span class="date">Master of Business Administration (MBA)</span>
+                                    <h2>University of Uyo</h2>
+                                    <p>Strategic Management, Governance, Organizational Leadership</p>
+                                </div>
+                                <div class="item scroll-animation" data-animation="fade_from_right">
+                                    <span class="date">B.Sc. Computer Science</span>
+                                    <h2>University of Uyo</h2>
+                                    <p>Systems Thinking • Data & Process Modeling</p>
+                                </div>
+                                <div class="item scroll-animation" data-animation="fade_from_right">
+                                    <span class="date">Executive Certifications</span>
+                                    <h2>Google • Others</h2>
+                                    <p>Foundations of Project Management • Digital Leadership & Business Strategy • Strategic Management & Corporate Governance • HR Analytics & Workforce Data</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+       <section class="portfolio-area page-section scroll-to-page" id="portfolio">
+    <div class="custom-container">
+        <div class="portfolio-content content-width">
+            <div class="section-header">
+                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                    <i class="las la-grip-vertical"></i> Selected Work
+                </h4>
+                <h1 class="scroll-animation" data-animation="fade_from_bottom">Case <span>Studies</span></h1>
+            </div>
+
+            <div class="row portfolio-items">
+                <div class="col-md-12 scroll-animation" data-animation="fade_from_bottom">
+                    <div class="portfolio-item portfolio-full">
+                        <h1 style="color: white; font-weight:bold;">Governance Architecture <span>Quarter Finance Group</span> </h1>
+                        <p><strong>Problem:</strong> Founder dependency created decision bottlenecks, undefined reporting lines, role ambiguity, and inconsistent processes.<br>
+                        <strong>Solution:</strong> Implemented role mapping, decision matrices (RACI-style), escalation protocols, and KPI-integrated dashboards to distribute authority and standardize workflows.<br>
+                        <strong>Outcome:</strong> Reduced founder involvement in routine decisions, improved accountability & reporting clarity, created investor-ready operational structure for sustainable scale.</p>
+                        <a href="assets/docs/From Founder Dependency to Institutional Disciplin.docx" download class="theme-btn mt-2">Download Case Document</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 scroll-animation" data-animation="fade_from_left">
+                    <div class="portfolio-item portfolio-half">
+                        <h1 style="color: white; font-weight:bold;font-size: 1.6rem;">Institutionalizing Execution Growth-Stage Fintech</h1>
+                        <p style="font-size: 14px;"><strong>Problem:</strong> Ad-hoc decision-making, fragmented accountability, and heavy reliance on founder for routine approvals slowed execution and limited scalability.<br>
+                        <strong>Solution:</strong> Designed decision flow mechanisms, role & responsibility architecture, escalation/review protocols, and standardized process documentation.<br>
+                        <strong>Outcome:</strong> Strategy converted into repeatable operational outcomes, reduced bottlenecks, increased transparency and predictable performance across functions.</p>
+                        <a href="assets/docs/Institutionalizing Execution.docx" download class="theme-btn mt-2">Download Case Document</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 scroll-animation" data-animation="fade_from_right">
+                    <div class="portfolio-item portfolio-half">
+                        <h1 style="color: white; font-weight:bold;font-size: 1.6rem;">Structural Leverage & Performance Visibility – Multiple Ventures</h1>
+                        <p style="font-size: 14px;"><strong>Problem:</strong> Informal processes, KPI misalignment, role gaps, and lack of performance dashboards created operational fragility and founder overload.<br>
+                        <strong>Solution:</strong> Engineered role architecture, decision flows, KPI alignment with strategic goals, performance dashboards, and process standardization layers.<br>
+                        <strong>Outcome:</strong> Transformed founder-dependent operations into resilient, measurable systems; achieved operational consistency, reduced risk, and enabled deliberate, sustainable growth.</p>
+                        <a href="assets/docs/Structural Leverage.docx" download class="theme-btn mt-2">Download Case Document</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+                <section class="contact-area page-section scroll-content" id="contact">
+                    <div class="custom-container">
+                        <div class="contact-content content-width">
+                            <div class="section-header">
+                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
+                                    <i class="las la-envelope"></i> Contact
+                                </h4>
+                                <h1 class="scroll-animation" data-animation="fade_from_bottom">Let’s Build <span>Structured Growth</span></h1>
+                            </div>
+                            <h3 class="scroll-animation" data-animation="fade_from_bottom">ubongeffiong46@gmail.com</h3>
+                            <p>+234 902 469 8673</p>
+                            <p id="required-msg">* Marked fields are required.</p>
+
+                           <form class="contact-form scroll-animation" data-animation="fade_from_bottom" id="contactForm">
+    <!-- <div class="alert alert-success text-dark messenger-box-contact__msg" style="display: none" role="alert">
+        Your message was sent successfully.
+    </div> -->
+    <!-- <div class="alert alert-danger messenger-box-contact__error" style="display: none" role="alert">
+        Something went wrong. Please try again.
+    </div> -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group">
+                <label for="full-name">Full Name <sup>*</sup></label>
+                <input type="text" name="full-name" id="full-name" placeholder="Your Full Name" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <label for="email">Email <sup>*</sup></label>
+                <input type="email" name="email" id="email" placeholder="Your email address" required>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="input-group">
+                <label for="message">Message <sup>*</sup></label>
+                <textarea name="message" id="message" placeholder="How can I help structure your growth?..." required></textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="input-group submit-btn-wrap">
+                <button class="theme-btn" type="submit" id="submit-form">Send Message</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!--  Modal -->
+<div id="responseModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img src="" alt="Status" class="modal-gif">
+    <p id="modalMessage"></p>
+  </div>
+</div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+        <!-- footer -->
+   <div style="text-align: center;padding:2rem;   border-radius: 8px;" >
+  <a href="https://pluscodeltd.vercel.app" target="_blank" class="down_footer" rel="noopener noreferrer"  >
+    Crafted with love by <span style="color:#28e98c;">PlusCode Inc</span>
+  </a>
+</div> </main>
+
+
+<script>
+const contactForm = document.getElementById("contactForm");
+const submitButton = document.getElementById("submit-form");
+const modal = document.getElementById("responseModal");
+const modalMessage = document.getElementById("modalMessage");
+const modalGif = document.querySelector(".modal-gif");
+const closeModal = document.querySelector(".modal .close");
+
+// GIF URLs
+const gifs = {
+    success: "https://giphy.com/gifs/PrizePicks-check-checkbox-green-FW1j2rsd1MkhYiFNPM", // Successful check
+    error: "https://www.google.com/imgres?q=exclamation&imgurl=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F09%2F16%2F97%2F72%2F360_F_916977212_45kUr7G7s5wu6sr3wds67Wi6MOoQDyl6.jpg&imgrefurl=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Dexclamation&docid=DbCg5-9GalspSM&tbnid=xoYF5QjsLzLlvM&vet=12ahUKEwjhr7Tn2PmSAxUPUEEAHaHvGgUQnPAOegQIaxAB..i&w=478&h=360&hcb=2&ved=2ahUKEwjhr7Tn2PmSAxUPUEEAHaHvGgUQnPAOegQIaxAB"          // Failed check
+};
+
+contactForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    // Show sending state
+    const originalText = submitButton.textContent;
+    submitButton.textContent = "Sending message...";
+    submitButton.disabled = true;
+
+    const fullName = document.getElementById("full-name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    try {
+        const response = await fetch("http://localhost:5000/api/messages", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ fullName, email, message })
+        });
+
+        if (response.ok) {
+            modalMessage.textContent = "Your message was sent successfully!";
+            modalGif.src = gifs.success;
+            contactForm.reset();
+        } else {
+            modalMessage.textContent = "Your message was not sent. Please try again.";
+            modalGif.src = gifs.error;
+        }
+    } catch (err) {
+        console.error(err);
+        modalMessage.textContent = "An error occurred. Please try again.";
+        modalGif.src = gifs.error;
+    }
+
+    // Reset button
+    submitButton.textContent = originalText;
+    submitButton.disabled = false;
+
+    // Show the modal
+    modal.style.display = "block";
+});
+
+// Close modal when clicking the X
+closeModal.onclick = () => modal.style.display = "none";
+
+// Close modal when clicking outside the box
+window.onclick = (event) => {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/ScrollToPlugin.min.js"></script>
+    <script src="assets/js/lightbox.min.js"></script>
+    
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/ajax-form.js"></script>
+    <script src="assets/js/color.js"></script>
+</body>
+</html>

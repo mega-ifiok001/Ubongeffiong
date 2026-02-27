@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Messages • Premium Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        :root {
+            --bg: #0d0d1a;
+            --card-bg: rgba(20, 20, 45, 0.45);
+            --text: #e0e7ff;
+            --text-muted: #a5b4fc;
+            --accent: #7c3aed;
+            --accent-glow: #a855f7;
+            --border: rgba(165, 180, 252, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a15 0%, #120d1f 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(90deg, #c084fc, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-bar {
+            position: relative;
+            flex: 1;
+            min-width: 280px;
+            max-width: 500px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.8rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text);
+            font-size: 1rem;
+            backdrop-filter: blur(16px);
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .messages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .message-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+        }
+
+        .message-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .message-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: white;
+        }
+
+        .message-card .email {
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .message-card p {
+            color: #d1d5db;
+            line-height: 1.55;
+            margin-bottom: 1rem;
+        }
+
+        .message-card .time {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            display: block;
+            text-align: right;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.65rem 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+
+        .page-btn:hover:not(.disabled) {
+            background: rgba(124, 58, 237, 0.15);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .page-btn.active {
+            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+            color: white;
+            border: none;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .loading, .no-results {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            padding: 4rem 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .messages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Messages Dashboard</h1>
+        <p class="subtitle">View and manage incoming inquiries</p>
+    </header>
+
+    <div class="controls">
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search by name, email or message..."/>
+        </div>
+    </div>
+
+    <div id="messagesGrid" class="messages-grid"></div>
+
+    <div id="loading" class="loading">Loading messages...</div>
+    <div id="noResults" class="no-results" style="display:none;">No messages found matching your search.</div>
+
+    <div class="pagination" id="pagination"></div>
+</div>
+
+<script>
+const API_URL = "http://localhost:5000/api/messages"; // ← your backend endpoint
+const ITEMS_PER_PAGE = 6; // adjust as needed
+
+let allMessages = [];
+let currentPage = 1;
+
+async function fetchMessages() {
+    try {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error("Failed to fetch");
+        allMessages = await res.json();
+        renderPage(currentPage);
+    } catch (err) {
+        console.error(err);
+        document.getElementById("messagesGrid").innerHTML = `<div class="loading">Error loading messages. Please try again later.</div>`;
+    }
+}
+
+function renderPage(page) {
+    const grid = document.getElementById("messagesGrid");
+    const loading = document.getElementById("loading");
+    const noResults = document.getElementById("noResults");
+    const searchTerm = document.getElementById("searchInput").value.toLowerCase().trim();
+
+    loading.style.display = "none";
+
+    // Filter
+    const filtered = allMessages.filter(msg =>
+        msg.full_name?.toLowerCase().includes(searchTerm) ||
+        msg.email?.toLowerCase().includes(searchTerm) ||
+        msg.message?.toLowerCase().includes(searchTerm)
+    );
+
+    if (filtered.length === 0) {
+        noResults.style.display = "block";
+        grid.innerHTML = "";
+        document.getElementById("pagination").innerHTML = "";
+        return;
+    }
+
+    noResults.style.display = "none";
+
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    const pageItems = filtered.slice(start, end);
+
+    grid.innerHTML = pageItems.map(msg => `
+        <div class="message-card">
+            <h4>${msg.full_name || "Anonymous"}</h4>
+            <span class="email">${msg.email}</span>
+            <p>${msg.message}</p>
+            <small class="time">${new Date(msg.created_at).toLocaleString()}</small>
+        </div>
+    `).join("");
+
+    renderPagination(filtered.length, page);
+}
+
+function renderPagination(totalItems, current) {
+    const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+    if (totalPages <= 1) {
+        document.getElementById("pagination").innerHTML = "";
+        return;
+    }
+
+    let html = "";
+
+    // Previous
+    html += `<button class="page-btn ${current === 1 ? 'disabled' : ''}" 
+                     ${current === 1 ? '' : `onclick="changePage(${current-1})"`}>
+                Previous
+             </button>`;
+
+    // Page numbers (simple version: show 1 ... current-1 current current+1 ... last)
+    for (let i = 1; i <= totalPages; i++) {
+        if (
+            i === 1 ||
+            i === totalPages ||
+            i === current ||
+            i === current - 1 ||
+            i === current + 1
+        ) {
+            html += `<button class="page-btn ${i === current ? 'active' : ''}" 
+                             onclick="changePage(${i})">${i}</button>`;
+        } else if (
+            (i === current - 2 && current > 3) ||
+            (i === current + 2 && current < totalPages - 2)
+        ) {
+            html += `<span class="page-btn disabled">...</span>`;
+        }
+    }
+
+    // Next
+    html += `<button class="page-btn ${current === totalPages ? 'disabled' : ''}" 
+                     ${current === totalPages ? '' : `onclick="changePage(${current+1})"`}>
+                Next
+             </button>`;
+
+    document.getElementById("pagination").innerHTML = html;
+}
+
+function changePage(page) {
+    currentPage = page;
+    renderPage(page);
+}
+
+// Search listener (real-time)
+document.getElementById("searchInput").addEventListener("input", () => {
+    currentPage = 1; // reset to page 1 on search
+    renderPage(1);
+});
+
+// Initial load
+fetchMessages();
+</script>
+
+</body>
+</html>

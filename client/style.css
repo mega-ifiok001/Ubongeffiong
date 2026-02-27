@@ -81,11 +81,12 @@ ul {
     margin-left: auto;
 }
 .theme-btn {
+    font-size: 14px;
     background: var(--primary_color);
     color: #000000;
     display: block;
     text-align: center;
-    padding: 10px 20px;
+    padding: 2px 12px;
     display: inline-flex;
     align-items: center;
     border-radius: 30px;

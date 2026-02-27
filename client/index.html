@@ -16,15 +16,15 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../../../maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href="/client/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/smooth-scrollbar.css">
-    <link rel="stylesheet" href="css/lightbox.min.css">
+    <link rel="stylesheet" href="/client/owl.carousel.min.css">
+    <link rel="stylesheet" href="/client/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/client/animate.min.css">
+    <link rel="stylesheet" href="/client/smooth-scrollbar.css">
+    <link rel="stylesheet" href="/client/lightbox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="/client/style.css">
+    <link rel="stylesheet" href="/client/responsive.css">
 
 </head>
 
@@ -431,7 +431,7 @@
                         <p style="font-size: 14px;"><strong>Problem:</strong> Ad-hoc decision-making, fragmented accountability, and heavy reliance on founder for routine approvals slowed execution and limited scalability.<br>
                         <strong>Solution:</strong> Designed decision flow mechanisms, role & responsibility architecture, escalation/review protocols, and standardized process documentation.<br>
                         <strong>Outcome:</strong> Strategy converted into repeatable operational outcomes, reduced bottlenecks, increased transparency and predictable performance across functions.</p>
-                        <a href="client/js/ajax-form.js client/js/bootstrap.bundle.min.js client/js/color.js client/js/gsap.min.js client/js/jquery.js client/js/lightbox.min.js client/js/main.js client/js/owl.carousel.js client/js/ScrollToPlugin.min.js client/js/ScrollTrigger.min.js/Institutionalizing Execution.docx" download class="theme-btn mt-2">Download Case Document</a>
+                        <a href="/client/Institutionalizing Execution.docx" download class="theme-btn mt-2">Download Case Document</a>
                     </div>
                 </div>
 
@@ -441,7 +441,7 @@
                         <p style="font-size: 14px;"><strong>Problem:</strong> Informal processes, KPI misalignment, role gaps, and lack of performance dashboards created operational fragility and founder overload.<br>
                         <strong>Solution:</strong> Engineered role architecture, decision flows, KPI alignment with strategic goals, performance dashboards, and process standardization layers.<br>
                         <strong>Outcome:</strong> Transformed founder-dependent operations into resilient, measurable systems; achieved operational consistency, reduced risk, and enabled deliberate, sustainable growth.</p>
-                        <a href="client/js/ajax-form.js client/js/bootstrap.bundle.min.js client/js/color.js client/js/gsap.min.js client/js/jquery.js client/js/lightbox.min.js client/js/main.js client/js/owl.carousel.js client/js/ScrollToPlugin.min.js client/js/ScrollTrigger.min.js/Structural Leverage.docx" download class="theme-btn mt-2">Download Case Document</a>
+                        <a href="client/ajax-form.js client/js/bootstrap.bundle.min.js client/js/color.js client/js/gsap.min.js client/js/jquery.js client/js/lightbox.min.js client/js/main.js client/js/owl.carousel.js client/js/ScrollToPlugin.min.js client/js/ScrollTrigger.min.js/Structural Leverage.docx" download class="theme-btn mt-2">Download Case Document</a>
                     </div>
                 </div>
 
@@ -547,7 +547,7 @@ contactForm.addEventListener("submit", async function(e) {
     const message = document.getElementById("message").value;
 
     try {
-        const response = await fetch("http://localhost:5000/api/messages", {
+        const response = await fetch("https://ubongeffiong.onrender.com/api/messages", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ fullName, email, message })
@@ -586,16 +586,16 @@ window.onclick = (event) => {
 };
 </script>
 
-    <script src="jquery.js"></script>
-    <script src="bootstrap.bundle.min.js"></script>
-    <script src="owl.carousel.js"></script>
-    <script src="gsap.min.js"></script>
-    <script src="ScrollTrigger.min.js"></script>
-    <script src="ScrollToPlugin.min.js"></script>
-    <script src="lightbox.min.js"></script>
+    <script src="/client/jquery.js"></script>
+    <script src="/client/bootstrap.bundle.min.js"></script>
+    <script src="/client/owl.carousel.js"></script>
+    <script src="/client/gsap.min.js"></script>
+    <script src="/client/ScrollTrigger.min.js"></script>
+    <script src="/client/ScrollToPlugin.min.js"></script>
+    <script src="/client/lightbox.min.js"></script>
     
-    <script src="main.js"></script>
-    <script src="ajax-form.js"></script>
-    <script src="color.js"></script>
+    <script src="/client/main.js"></script>
+    <script src="/client/ajax-form.js"></script>
+    <script src="/client/color.js"></script>
 </body>
 </html>
